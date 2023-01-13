@@ -1,4 +1,4 @@
-package gotool
+package sorttool
 
 import (
 	"testing"
