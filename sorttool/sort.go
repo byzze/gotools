@@ -42,7 +42,7 @@ func SortByVersion(list []string, order OrderType) {
 	})
 }
 
-// 创建一个字节数组，遍历将所有的字符放入，当字符是数字类型是，需要计算总数，再将其放入数组中，放入时机为数组末尾或遇到非数字类型的字符
+// 创建一个字节数组，遍历将所有的字符放入，当字符是数字类型时，需要计算总数，再将其放入数组中，放入时机为数组末尾或遇到非数字类型的字符
 func processStringData(value string) []byte {
 	var byteArr []byte
 	var num int
