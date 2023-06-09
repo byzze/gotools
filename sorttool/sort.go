@@ -45,24 +45,24 @@ func SortByVersion(list []string, order OrderType) {
 // 创建一个字节数组，遍历将所有的字符放入，当字符是数字类型时，需要计算总数，再将其放入数组中，放入时机为数组末尾或遇到非数字类型的字符
 func processStringData(value string) []byte {
 	var byteArr []byte
-	var num int
+	var curNum int
 	var factor int = 1
 	vLen := len(value)
 	for i := 0; i < vLen; i++ {
-		tmpNum := value[i] - '0'
-		flag := tmpNum >= 0 && tmpNum <= 9
+		digit := value[i] - '0'
+		flag := digit >= 0 && digit <= 9
 		if flag {
-			num = int(tmpNum) + num*factor
+			curNum = int(digit) + curNum*factor
 			factor = factor * 10
 			if i+1 >= vLen {
-				byteArr = append(byteArr, byte(num))
-				num = 0
+				byteArr = append(byteArr, byte(curNum))
+				curNum = 0
 				factor = 1
 			}
 			continue
-		} else if num >= 0 {
-			byteArr = append(byteArr, byte(num))
-			num = 0
+		} else if curNum >= 0 {
+			byteArr = append(byteArr, byte(curNum))
+			curNum = 0
 			factor = 1
 		}
 		byteArr = append(byteArr, value[i])
